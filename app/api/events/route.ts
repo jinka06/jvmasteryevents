@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createEvent } from "@/db/event.model";
+import { createEvent, getAllEvents } from "@/db/event.model";
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,4 +27,14 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+export async function GET(){
+    try{
+        const events = await getAllEvents();
+        return NextResponse.json({ message: 'Events fetched successfully', events}, {status: 200})
+    } catch(e){
+        return NextResponse.json({ message: "Event fetching failed", error: e instanceof Error ? e.message : "unknown" },
+      { status: 500 })
+    }
 }
