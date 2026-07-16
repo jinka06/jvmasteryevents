@@ -39,7 +39,8 @@ export async function getAllEvents(): Promise<Event[]> {
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | null> {
-  const result = await pool.query(`SELECT * FROM events WHERE slug = $1`, [slug]);
+  const sanitizedSlug = slug.trim().toLowerCase()
+  const result = await pool.query(`SELECT * FROM events WHERE slug = $1`, [sanitizedSlug]);
   return result.rows[0] ?? null;
 }
 
