@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createEvent, getAllEvents } from "@/db/event.model";
+import { createEvent, getAllEvents, getEventBySlug } from "@/db/event.model";
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       event.agenda = formData.getAll("agenda");
       event.tags = formData.getAll("tags");
     } catch (e) {
-      return NextResponse.json({ message: "Invalid form data format" }, { status: 400 });
+      return NextResponse.json({ message: "Invalid JSON data format" }, { status: 400 });
     }
 
     const createdEvent = await createEvent(event);
