@@ -3,7 +3,7 @@
 import {useState} from "react"
 import {createBooking} from "@/lib/actions/booking.actions"
 
-const BookEvent = ({eventId, slug}:{eventId: string, slug: string}) => {
+const BookEvent = ({eventId, slug}:{eventId: number, slug: string}) => {
     const [email, setEmail] = useState('')
     const [submitted, setSubmitted] = useState(false)
     const [error, setError] = useState<string | null>(null)

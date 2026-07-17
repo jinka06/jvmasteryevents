@@ -2,7 +2,7 @@
 
 import {creationBooking} from "@/db/booking.model"
 
-export const createBooking = async ({eventId, email}: {eventId: string, email: string}) => {
+export const createBooking = async ({eventId, email}: {eventId: number, email: string}) => {
     try{
         const booking = await creationBooking({eventId, email})
 
