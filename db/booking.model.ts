@@ -2,7 +2,7 @@ import pool from "@/db/client";
 import { bookingInputSchema, type Booking } from "@/lib/validation/booking";
 import { getEventById } from "@/db/event.model";
 
-export async function createBooking(data: unknown): Promise<Booking> {
+export async function creationBooking(data: unknown): Promise<Booking> {
   const parsed = bookingInputSchema.parse(data);
 
   const event = await getEventById(parsed.eventId);
