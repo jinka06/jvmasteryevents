@@ -5,6 +5,7 @@ import {getSimilarEventBySlug} from '@/lib/actions/event.actions'
 import EventCard from '@/components/EventCard'
 import type {Event} from '@/lib/validation/event'
 import {cacheLife} from 'next/cache'
+import {getBookingsByEvent} from '@/db/booking.model'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -44,7 +45,7 @@ const EventDetailsPage = async ({params}: {params: Promise<{slug: string}>}) => 
 
   if(!description) return notFound()
 
-    const bookings = 10
+    const bookings = (await getBookingsByEvent(id)).length
 
     const similarEvents: Event[] = await getSimilarEventBySlug(slug)
 

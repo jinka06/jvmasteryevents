@@ -8,7 +8,7 @@ export const getSimilarEventBySlug = async (slug:string)=>{
         const event = await getEventBySlug(slug)
 
         if(!event){
-            throw new Error(`Event with slug "${slug} not found`)
+            throw new Error(`Event with slug "${slug}" not found`)
         }
         const result = await pool.query(
             `SELECT * FROM events
