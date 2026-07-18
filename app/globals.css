@@ -111,6 +111,10 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -163,7 +167,7 @@
     }
 
     ul {
-      @apply flex flex-row items-center gap-6;
+      @apply flex flex-row items-center gap-6 list-none;
     }
   }
 
@@ -268,6 +272,48 @@
       button {
         @apply bg-primary hover:bg-primary/90 w-full cursor-pointer items-center justify-center rounded-[6px] px-4 py-2.5 text-lg font-semibold text-black;
       }
+    }
+  }
+
+  #create-event-page {
+    @apply max-w-2xl mx-auto w-full py-10 flex flex-col gap-8;
+
+    h1 {
+      @apply text-center mb-6;
+    }
+  }
+
+  #create-event-form {
+    @apply bg-dark-100 border-dark-200 card-shadow flex flex-col gap-6 rounded-[10px] border px-6 py-8 sm:px-10 sm:py-10;
+
+    div {
+      @apply flex flex-col gap-2;
+    }
+
+    label {
+      @apply text-light-100 text-sm font-semibold;
+    }
+
+    input,
+    textarea,
+    select {
+      @apply bg-dark-200 border border-border-dark rounded-[6px] px-5 py-2.5 text-base text-foreground placeholder:text-light-200 focus:outline-none focus:ring-2 focus:ring-primary/50 w-full;
+    }
+
+    textarea {
+      @apply resize-y leading-relaxed;
+    }
+
+    select {
+      @apply cursor-pointer;
+    }
+
+    .form-row {
+      @apply grid grid-cols-1 sm:grid-cols-2 gap-6;
+    }
+
+    button {
+      @apply bg-primary hover:bg-primary/90 w-full cursor-pointer items-center justify-center rounded-[6px] px-4 py-3 mt-2 text-lg font-semibold text-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
     }
   }
 }
